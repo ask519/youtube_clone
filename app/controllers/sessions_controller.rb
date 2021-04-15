@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       @output = "Hello, #{user.name}. You've signed up to YouTube Clone."
       session[:user_id] = user.id
     end
-    redirect_to '/videos'
+    redirect_to '/'
   end
 
   def failure

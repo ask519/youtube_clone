@@ -1,5 +1,11 @@
-<h1>Videos#show</h1>
-<p>Find me in app/views/videos/show.html.erb</p>
+<h1><%= @video.name %></h1>
 
+<h3>Comments</h3><br>
 
-<h3><%= @video.name %></h3>
+<%= link_to "Add a comment", request.fullpath + '/comment' %>
+
+<ul>
+  <%= @comments.each do |comment| %>
+    <li><%= comment.user.name + ": " + comment.body %></li>
+  <% end %>
+</ul>

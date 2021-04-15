@@ -22,7 +22,7 @@ class VideosController < ApplicationController
       url_to_hls_playlist: s3_object.public_url,
     )
     if @video.save
-      redirect_to '/videos'
+      redirect_to '/'
     else
       redirect_to '/videos/new'
     end
@@ -30,6 +30,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @comments = Comment.where(:reference => params[:id])
   end
 
   def destroy
