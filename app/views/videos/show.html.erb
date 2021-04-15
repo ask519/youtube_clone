@@ -5,7 +5,7 @@
 <%= link_to "Add a comment", request.fullpath + '/comment' %>
 
 <ul>
-  <%= @comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <li><%= comment.user.name + ": " + comment.body %></li>
   <% end %>
 </ul>
