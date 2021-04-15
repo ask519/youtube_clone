@@ -1,0 +1,8 @@
+<h1>Videos#index</h1>
+<p>Find me in app/views/videos/index.html.erb</p>
+
+<ul>
+<%= @videos.each do |video| %>
+  <li><a href="/videos/<%= video.id %>"><%= video.name %></a></li>
+<% end %>
+</ul> \

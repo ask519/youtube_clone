@@ -1,0 +1,10 @@
+<h1>Videos#new</h1>
+<p>Find me in app/views/videos/new.html.erb</p>
+
+<h2>Upload a video</h2>
+
+<%= form_tag '/videos', method: :post, enctype: 'multipart/form-data' do %>
+  <%= text_field_tag :file_name %> <br>
+  <%= file_field_tag :file  %> <br>
+  <%= submit_tag 'Upload Video' %>
+<% end %>
