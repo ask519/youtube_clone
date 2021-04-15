@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_112728) do
+ActiveRecord::Schema.define(version: 2021_04_14_155415) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -20,4 +20,14 @@ ActiveRecord::Schema.define(version: 2021_04_14_112728) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name"
+    t.string "url_to_hls_playlist"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_videos_on_user_id"
+  end
+
+  add_foreign_key "videos", "users"
 end
