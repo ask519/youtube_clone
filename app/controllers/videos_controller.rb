@@ -12,7 +12,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    s3_bucket = Aws::S3::Resource.new(region: 'ap-south-1').bucket('youtube-clone-bucket')
+    s3_bucket = Aws::S3::Resource.new(region: ENV['AWS_REGION']).bucket(ENV['AWS_S3_BUCKET_NAME'])
     name = File.basename params[:file]
     s3_object = s3_bucket.object(name)
     s3_object.upload_file(params[:file])

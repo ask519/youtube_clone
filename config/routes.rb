@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/videos/:id/comment', to: 'comments#new'
   post '/comments', to: 'comments#create'
   post '/videos', to:'videos#create'
+  post '/likes', to:'likes#create'
+  post '/dislikes', to:'likes#destroy'
   get '/login', to: 'sessions#new'
   get 'auth/:provider', to: 'sessions#new'
   get 'auth/:provider/callback', :to => 'sessions#create'
