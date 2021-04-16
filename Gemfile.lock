@@ -1297,12 +1297,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk
+  aws-sdk (~> 3.0.2)
   bootsnap (>= 1.4.4)
   bulma-rails (~> 0.9.1)
   byebug
   capybara (>= 3.26)
-  figaro
+  figaro (~> 1.2.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   omniauth (~> 1.9)
