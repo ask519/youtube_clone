@@ -7,7 +7,7 @@ class VideosController < ApplicationController
 
   def new
     if session[:user_id] == nil
-      redirect_to '/login'
+      redirect_to '/auth/google_oauth2'
     end
   end
 

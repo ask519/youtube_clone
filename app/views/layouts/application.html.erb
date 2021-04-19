@@ -1,16 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100vh; width: 100vw; background-color: #FAFAFA">
   <head>
-    <title>YoutubeClone</title>
+    <title>Youtube Clone</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation" style="background-color: white">
+    <div class="navbar-brand">
+      <%= link_to '/', class: "navbar-item" do%>
+        <h1 class="title is-4" style="color: #EB4034">YouTube Clone</h1>
+      <% end %>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <% if session[:user_id] == nil %>
+          <div class="navbar-item">
+            <%= link_to "Log In", '/auth/google_oauth2', class: "button is-primary" %>
+          </div>
+        <% else %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              <%= User.find(session[:user_id]).name %>
+            </a>
+            <div class="navbar-dropdown">
+              <%= link_to "View Profile", "/users/#{session[:user_id]}", class: "navbar-item"%>
+              <%= link_to "Upload", "/videos/new", class: "navbar-item" %>
+              <hr class="navbar-divider">
+              <a href="/logout" class="navbar-item is-danger" style="color: #EB4034">
+                Log Out
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+    <br><br>
     <%= yield %>
   </body>
 </html>

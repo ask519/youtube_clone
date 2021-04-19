@@ -1,9 +1,10 @@
 <div class="columns is-centered">
   <div class="column is-8">
     <br>
-    <h1 class="title is-2">Videos</h1>
+    <h1 class="title is-2"><%= @user.name %></h1>
+    <h1 class="subtitle is-5">Videos</h1>
     <div class="columns is-multiline">
-      <% @videos.each do |video| %>
+      <% @user.videos.each do |video| %>
         <div class="column is-half">
           <a href="/videos/<%= video.id %>">
             <div class="card">

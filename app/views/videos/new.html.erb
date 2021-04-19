@@ -1,10 +1,28 @@
-<h1>Videos#new</h1>
-<p>Find me in app/views/videos/new.html.erb</p>
+<div class="columns is-centered">
+  <div class="column is-8">
+    <br>
+    <h1 class="title is-2">Upload a Video</h1>
 
-<h2>Upload a video</h2>
-
-<%= form_tag '/videos', method: :post, enctype: 'multipart/form-data' do %>
-  <%= text_field_tag :file_name %> <br>
-  <%= file_field_tag :file  %> <br>
-  <%= submit_tag 'Upload Video' %>
-<% end %>
+    <%= form_tag '/videos', method: :post, enctype: 'multipart/form-data' do %>
+      <%= text_field_tag :file_name, "", placeholder: "Title of your video" , class: "input mr-2 ml-2 mb-3" %> <br>
+      <%#= file_field_tag :file, class: "file-input"%>
+      <div class="file has-name mr-2 ml-2 mb-3">
+        <label class="file-label">
+          <%= file_field_tag :file, class: "file-input"%>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="far fa-lg fa-file-video"></i>
+            </span>
+          </span>
+            <span class="file-name">
+              Choose a file...
+            </span>
+        </label>
+      </div>
+      <%#= submit_tag 'Upload Video', class: "button is-primary mr-2 ml-2" %>
+      <%= button_tag(type: 'submit', class: "button is-primary ml-2") do %>
+        <i class="fas fa-upload mr-2"></i> Upload
+      <% end %>
+    <% end %>
+  </div>
+</div>
