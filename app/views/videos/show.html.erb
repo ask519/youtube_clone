@@ -53,7 +53,7 @@
             <div class="level-left">
               <div class="level-item">
                 <% like_count = Like.where(:reference => comment.id, :like_on => :comment).count %>
-                <% if Like.where(:user_id => session[:user_id], :reference => comment.id).count == 0 %>
+                <% if Like.where(:user_id => session[:user_id], :reference => comment.id, :like_on => :comment).count == 0 %>
                   <%= link_to likes_path(:like_on => :comment, :reference => comment.id, :video_id => @video.id), method: :post do%>
                     <p style="text-align: right; color: #EB4034">
                       <i class="icon is-small far fa-heart mr-1"></i><%= like_count %>
