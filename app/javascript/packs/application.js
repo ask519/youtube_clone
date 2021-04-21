@@ -7,12 +7,28 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
-require("hls.js")
+import videojs from "video.js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", function() {
+    let player;
+    for(player in document.getElementsByClassName('video-js')) {
+        let video = videojs('video_player')
+        console.log("Change, assigning video")
+    }
+});
+
+document.addEventListener("turbolinks:before-visit", function() {
+    let player;
+    for(player in document.getElementsByClassName('video-js')) {
+        let video = videojs('video_player')
+        video.dispose()
+        console.log("before_load, disposing of video")
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 
