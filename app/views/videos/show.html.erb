@@ -1,6 +1,6 @@
 <script type="text/javascript">
     var video = document.getElementById("video");
-    var videoSrcHls = "<%= @test_url %>";
+    var videoSrcHls = "<%= @video.playlist_url %>";
 
     if(Hls.isSupported()) {
         var config = {

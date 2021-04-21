@@ -12,10 +12,10 @@
   </head>
 
   <body>
-    <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation" style="background-color: white">
+    <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation" style="background-color: #EB4034">
     <div class="navbar-brand">
       <%= link_to '/', class: "navbar-item" do%>
-        <h1 class="title is-4" style="color: #EB4034">YouTube Clone</h1>
+        <h1 class="title is-4 has-text-white">YouTube Clone</h1>
       <% end %>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
@@ -32,7 +32,7 @@
           </div>
         <% else %>
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
+            <a class="navbar-link is-arrowless has-text-white">
               <%= User.find(session[:user_id]).name %>
             </a>
             <div class="navbar-dropdown">

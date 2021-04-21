@@ -6,17 +6,20 @@
     <%= form_tag '/videos', method: :post, enctype: 'multipart/form-data' do %>
       <%= text_field_tag :file_name, "", placeholder: "Title of your video" , class: "input mr-2 ml-2 mb-3" %> <br>
       <%#= file_field_tag :file, class: "file-input"%>
-      <div class="file has-name mr-2 ml-2 mb-3">
+      <div class="file has-name ml-2 mb-2">
         <label class="file-label">
           <%= file_field_tag :file, class: "file-input"%>
           <span class="file-cta">
             <span class="file-icon">
-              <i class="far fa-lg fa-file-video"></i>
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
             </span>
           </span>
-            <span class="file-name">
-              Choose a file...
-            </span>
+          <span class="file-name">
+            Screen Shot 2017-07-29 at 15.54.25.png
+          </span>
         </label>
       </div>
       <%#= submit_tag 'Upload Video', class: "button is-primary mr-2 ml-2" %>
