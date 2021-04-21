@@ -1,3 +1,19 @@
+<script type="text/javascript">
+    var video = document.getElementById("video");
+    var videoSrcHls = "<%= @test_url %>";
+
+    if(Hls.isSupported()) {
+        var config = {
+            capLevelToPlayerSize: true,
+        }
+        var hls = new Hls(config);
+        hls.loadSource(videoSrcHls);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+    }
+</script>
 <div class="columns is-centered">
   <div class="column is-8">
     <br>
@@ -25,9 +41,9 @@
       </div>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <video id="video" width="100%" height="auto" controls></video>
 
-    <h3 class="title is-4">Comments</h3>
+    <h3 class="title is-4 mt-3">Comments</h3>
     <%= form_tag '/comments', method: :post do %>
       <%= hidden_field_tag 'video_id', @video.id %>
       <%= text_area_tag :body, "", rows: 3, class: 'textarea is-small ml-2 mr-2 mb-2'%>

@@ -30,6 +30,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @test_url = "https://youtube-clone-bucket-processed.s3.ap-south-1.amazonaws.com/testvid/testvid.m3u8"
     @comments = Comment.where(:reference => params[:id])
   end
 
