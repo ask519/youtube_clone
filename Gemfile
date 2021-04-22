@@ -33,6 +33,7 @@ gem 'aws-sdk', '~> 3.0.2'
 gem 'figaro', '~> 1.2.0'
 gem 'omniauth', '~> 1.9'
 gem 'omniauth-google-oauth2', '~> 0.8.2'
+gem 'rufus-scheduler', '~> 3.7.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
