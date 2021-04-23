@@ -44,6 +44,8 @@ class VideosController < ApplicationController
         vid.thumbnail_url = "https://#{ENV['AWS_S3_BUCKET_NAME']+'-processed'}.s3.#{ENV['AWS_REGION']}.amazonaws.com/#{file_name_without_ext}/thumb.png"
         vid.playlist_url = "https://#{ENV['AWS_S3_BUCKET_NAME']+'-processed'}.s3.#{ENV['AWS_REGION']}.amazonaws.com/#{file_name_without_ext}/#{file_name_without_ext}.m3u8"
         vid.save
+        user = User.find(vid.user_id)
+        UserMailer.upload_successful(user, vid).deliver_now
         url_update_scheduler.shutdown
       end
     end
