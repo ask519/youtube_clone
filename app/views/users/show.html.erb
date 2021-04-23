@@ -21,6 +21,13 @@
                   </div>
                 </div>
               </div>
+              <% if session[:user_id] == @user.id %>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item">Download</a>
+<!--                  <a href="#" class="card-footer-item" style="color: #EB4034">Delete</a>-->
+                  <%= link_to "Delete", videos_delete_path(:id => video.id), class: "card-footer-item", style: "color: #EB4034", method: :post %>
+                </footer>
+              <% end %>
             </div>
             <!--        <div class="box  mb-5">-->
             <!--          <article class="media">-->

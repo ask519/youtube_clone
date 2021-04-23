@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/', to:'videos#index'
   get '/videos/new', to: "videos#new"
   get '/videos/:id', to: 'videos#show'
+  post '/videos/delete', to: "videos#destroy"
   get '/videos/:id/comment', to: 'comments#new'
   post '/comments', to: 'comments#create'
   post '/videos', to:'videos#create'
