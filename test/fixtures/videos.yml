@@ -3,9 +3,13 @@
 one:
   user: one
   name: MyString
-  url_to_hls_playlist: MyString
+  playlist_url: MyString
+  thumbnail_url: MyString
+  file_name: MyString
 
 two:
   user: two
   name: MyString
-  url_to_hls_playlist: MyString
+  playlist_url: MyString
+  thumbnail_url: MyString
+  file_name: MyString
