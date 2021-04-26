@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   user: one
   reference: 1
   like_on: 1
 
 two:
+  id: 2
   user: two
   reference: 1
   like_on: 1
