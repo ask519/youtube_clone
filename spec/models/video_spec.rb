@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Video, type: :model do
   describe "creation" do
     it "shouldn't save a blank Video" do
+      user = create(:user)
       video = Video.create()
       expect(video).to_not be_valid
     end
