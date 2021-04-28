@@ -32,7 +32,7 @@ class VideosController < ApplicationController
       s3_object.upload_file(file)
 
       url_update_scheduler = Rufus::Scheduler.singleton
-      url_update_scheduler.every '60s' do
+      url_update_scheduler.every '60s' do |job|
         resp = sqs_client.receive_message({queue_url: sqs_url, message_attribute_names: ["All"], max_number_of_messages: 1, wait_time_seconds: 10})
         # Rails.logger.info "Fetched #{resp.messages.count} message(s)"
         # Rails.logger.flush
@@ -50,7 +50,7 @@ class VideosController < ApplicationController
           user = User.find(vid.user_id)
           UserMailer.upload_successful(user, vid).deliver_now
 
-          url_update_scheduler.shutdown
+          job.unschedule
         end
       end
 
