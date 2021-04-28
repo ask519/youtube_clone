@@ -10,4 +10,10 @@ class UserMailer < ApplicationMailer
     @video = video
     mail(to: @user.email, subject: "Your upload was successful")
   end
+
+  def delete_successful(user, video)
+    @user = user
+    @video = video
+    mail(to: @user.email, subject: "Your video was deleted")
+  end
 end

@@ -83,6 +83,8 @@ class VideosController < ApplicationController
         processed_s3_bucket.object(object.key).delete
       end
 
+      UserMailer.delete_successful(User.find(@video.user_id), @video).deliver_now
+
       @video.destroy
 
       redirect_to "/users/#{user_id}"
