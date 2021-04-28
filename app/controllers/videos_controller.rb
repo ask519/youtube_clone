@@ -79,7 +79,9 @@ class VideosController < ApplicationController
       upload_key = @video.file_name
       processed_key = File.basename(upload_key, File.extname(upload_key)) + '/'
       upload_s3_bucket.object(upload_key).delete
-      processed_s3_bucket.objects({prefix: processed_key}).batch_delete!
+      processed_s3_bucket.objects({prefix: processed_key}).each do |object|
+        processed_s3_bucket.object(object.key).delete
+      end
 
       @video.destroy
 
