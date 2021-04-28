@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'auth/failure', :to => 'sessions#failure'
   get '/logout', :to => 'sessions#destroy'
   get '/users/:id', to: 'users#show'
-  post '/users/download/:id', to: 'users#download_video'
+  post '/videos/download/:id', to: 'videos#download_video'
 end
