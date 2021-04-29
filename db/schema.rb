@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_083426) do
+ActiveRecord::Schema.define(version: 2021_04_29_102809) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_083426) do
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["reference"], name: "index_comments_on_reference"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_04_21_083426) do
     t.integer "like_on"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["like_on"], name: "index_likes_on_like_on"
+    t.index ["reference"], name: "index_likes_on_reference"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -36,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_083426) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
   create_table "videos", force: :cascade do |t|
@@ -46,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_083426) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "thumbnail_url"
     t.string "file_name"
+    t.index ["file_name"], name: "index_videos_on_file_name"
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
