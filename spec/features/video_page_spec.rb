@@ -69,4 +69,29 @@ RSpec.feature "Video Page", type: :feature do
     comment_like_count = find(:xpath, "/html/body/div[1]/div/article/div/nav/div/div/a", text: "1")
     expect(comment_like_count).to_not eq nil
   end
+
+  it "should let a logged in user remove his like on a video" do
+    user = create(:user)
+    video = create(:video, id: 1, name: "Tester's Video", user_id: 1)
+    like = create(:like)
+    visit "/auth/google_oauth2/callback"
+    visit "/videos/1"
+    find(:xpath, "/html/body/div[1]/div/div[1]/div[3]/a", text: "1").click
+    expect(page.current_path).to eq "/videos/1/"
+    like_count = find(:xpath, "/html/body/div[1]/div/div[1]/div[3]/a", text: "0")
+    expect(like_count).to_not eq "nil"
+  end
+
+  it "should let a logged in user remove his like on a comment" do
+    user = create(:user)
+    video = create(:video, id: 1, name: "Tester's Video", user_id: 1)
+    comment = create(:comment)
+    like = create(:like, like_on: 1)
+    visit "/auth/google_oauth2/callback"
+    visit "/videos/1"
+    find(:xpath, "/html/body/div[1]/div/article/div/nav/div/div/a", text: "1").click
+    expect(page.current_path).to eq "/videos/1/"
+    comment_like_count = find(:xpath, "/html/body/div[1]/div/article/div/nav/div/div/a", text: "0")
+    expect(comment_like_count).to_not eq nil
+  end
 end
